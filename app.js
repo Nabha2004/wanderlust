@@ -4,6 +4,8 @@ const mongoose = require("mongoose");
 const Listing = require("./models/listing.js");
 //ejs ka setup ke  liye
 const path = require("path");
+//method override
+const methodOverride = require("method-override");
 
 const MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust";
 main().then(()=>{
@@ -19,6 +21,7 @@ async function main(){
 app.set("view engine","ejs");
 app.set("views",path.join(__dirname,"views"));
 app.use(express.urlencoded({extended:true}));  //1 ke liye(taaki parse kr paye)
+app.use(methodOverride("_method"));
 
 app.get("/",(req,res)=>{
     res.send("Hi , I am root!");
@@ -61,8 +64,15 @@ app.post("/listings",async(req,res)=>{
     //let {title,description,image,price,country,location}=req.body;
     const newListing = new Listing(req.body.Listing);
     await newListing.save();
-   res.render("/listings");
+   res.redirect("/listings");
 
+})
+
+//edit route
+app.get("/listings/:id/edit",async(req,res)=>{
+    let {id} = req.params; 
+    const listing = await Listing.findById(id);
+    res.render("listings/edit.ejs",{listing});
 })
 
 
