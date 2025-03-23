@@ -7,10 +7,15 @@ const listingSchema = new Schema({
     required : true,
     },
     description : String , 
-    image : {
-    type  : String , 
-    default : "https://unsplash.com/photos/assorted-hot-air-balloons-flying-at-high-altitude-during-daytime-hpTH5b6mo2s",
-    set : (v) => v === "" ? "https://unsplash.com/photos/assorted-hot-air-balloons-flying-at-high-altitude-during-daytime-hpTH5b6mo2s" : v, 
+    image: {
+        type: String,
+        default: "https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0",
+        set: (v) => {
+            if (typeof v === "object" && v.url) {
+                return v.url; // Store only the URL from the object
+            }
+            return v || "https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0";
+        },
     },
     price : Number ,
     location : String ,
