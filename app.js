@@ -44,12 +44,18 @@ app.get("/listings",async(req,res)=>{
     res.render("listings/index.ejs",{allListings});
 });
 
+//New Route   (new ko show ke upar taaki voh new ko id na le/samjhe)
+app.get("/listings/new",(req,res)=>{
+    res.render("listings/new.ejs");
+})
+
 //show route
 app.get("/listings/:id",async(req,res)=>{
 let {id} = req.params; //1
 const listing = await Listing.findById(id);
 res.render("listings/show.ejs",{listing});
 })
+
 
 let port = 3000;
 app.listen(port,()=>{
