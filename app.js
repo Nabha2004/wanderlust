@@ -18,6 +18,7 @@ async function main(){
 //ejs ke liye
 app.set("view engine","ejs");
 app.set("views",path.join(__dirname,"views"));
+app.use(express.urlencoded({extended:true}));  //1 ke liye(taaki parse kr paye)
 
 app.get("/",(req,res)=>{
     res.send("Hi , I am root!");
@@ -42,6 +43,13 @@ app.get("/listings",async(req,res)=>{
     const allListings = await Listing.find({});
     res.render("listings/index.ejs",{allListings});
 });
+
+//show route
+app.get("/listings/:id",async(req,res)=>{
+let {id} = req.params; //1
+const listing = await Listing.findById(id);
+res.render("listings/show.ejs",{listing});
+})
 
 let port = 3000;
 app.listen(port,()=>{
