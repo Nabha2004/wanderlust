@@ -75,6 +75,13 @@ app.get("/listings/:id/edit",async(req,res)=>{
     res.render("listings/edit.ejs",{listing});
 })
 
+//Update route
+app.put("/listings/:id",async(req,res)=>{
+    let {id} = req.params; 
+    await Listing.findByIdAndUpdate(id,{...req.body.Listing});
+    res.redirect(`/listings/${id}`);
+})
+
 
 let port = 3000;
 app.listen(port,()=>{

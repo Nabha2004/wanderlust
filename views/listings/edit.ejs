@@ -10,7 +10,7 @@
     <form method="POST" action="/listings/<%=listing._id%>?_method=PUT">
         <input name="Listing[title]" value="<%=listing.title%>" type="text">
         <br><br>
-        <textarea name="Listing[description]"  value="<%=listing.description%>"  type="text"></textarea>
+        <textarea name="Listing[description]"> <%= listing.description %> </textarea>
         <br><br>
         <input name="Listing[image]" value="<%=listing.image%>"  type="text">
         <br><br>
