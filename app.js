@@ -56,6 +56,15 @@ const listing = await Listing.findById(id);
 res.render("listings/show.ejs",{listing});
 })
 
+//create route
+app.post("/listings",async(req,res)=>{
+    //let {title,description,image,price,country,location}=req.body;
+    const newListing = new Listing(req.body.Listing);
+    await newListing.save();
+   res.render("/listings");
+
+})
+
 
 let port = 3000;
 app.listen(port,()=>{
