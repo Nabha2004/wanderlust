@@ -16,3 +16,36 @@
 .nav-link{
 color : #222222 !important;
 }
+
+/* Footer */
+.f-info-links a{
+text-decoration: none;
+color:#222222;
+}
+
+.f-info-links a:hover{
+    text-decoration: underline;
+ }
+
+.f-info-links , .f-info-socials , .f-info-brand{
+    align-items: center;
+    width : 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.f-info-socials i {
+    margin-right:1rem; /*icons ke bich me space*/
+    font-size: 1.2rem;
+}
+
+ .f-info{
+    text-align: center;
+    height:8rem;
+    background-color: #ebebeb;
+    display : flex;    /*ek line me aa gaye*/
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: space-evenly;
+ }
