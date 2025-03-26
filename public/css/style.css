@@ -1,5 +1,13 @@
 body {
     font-family: "Plus Jakarta Sans", sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/*body , container --> footer ko still rkhne ke liye*/
+.container{
+   flex:1;
 }
 
 /* Navbar */
@@ -84,4 +92,8 @@ color:#222222;
  .card-img-overlay:hover {
     opacity : 0.2;
     background-color: white;
+ }
+
+ .add-btn{
+   background-color: #fe424d;
  }
