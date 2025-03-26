@@ -94,6 +94,14 @@ color:#222222;
     background-color: white;
  }
 
+ /*New Page*/
  .add-btn{
-   background-color: #fe424d;
+   background-color: #fe424d !important;
+   border:none !important;
+ }
+
+ /*Edit Page*/
+ .edit-btn{
+   background-color: #fe424d !important;
+   border:none !important;
  }
